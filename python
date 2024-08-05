@@ -1,0 +1,124 @@
+1).write a python program for "my name is vaarahi" and get the count for each word without using python functions
+string = "my name is vaarahi"
+word_counts = {}  # Using a dictionary to store word counts
+
+current_word = ""
+for char in string:
+    if char == " ":
+        if current_word:
+            if current_word in word_counts:
+                word_counts[current_word] += 1
+            else:
+                word_counts[current_word] = 1
+            current_word = ""
+    else:
+        current_word += char
+
+# Handle the last word
+if current_word:
+    if current_word in word_counts:
+        word_counts[current_word] += 1
+    else:
+        word_counts[current_word] = 1
+
+# Print the word counts
+for word, count in word_counts.items():
+    print(f"{word}: {count}")
+
+
+
+2.
+
+import re
+
+def clean_and_split_name(name):
+    # Remove special characters
+    cleaned_name = re.sub(r'[^A-Za-z\s]', '', name)
+    
+    # Split the name into first name and last name
+    parts = cleaned_name.split()
+    
+    # Check if we have at least two parts (first and last name)
+    if len(parts) >= 2:
+        first_name = parts[0]
+        last_name = ' '.join(parts[1:])
+    else:
+        first_name = cleaned_name
+        last_name = ""
+    
+    return first_name, last_name
+
+name = 'v@@rah! Cloud'
+first_name, last_name = clean_and_split_name(name)
+print("First Name:", first_name)
+print("Last Name:", last_name)
+
+
+3.
+str = "myself harika  ,   am gcp data engineer"
+words = []
+word = ""
+
+for char in str:
+    if char.isalnum() or char == " ":
+        if char != " ":
+            word += char
+        else:
+            words.append(word)
+            word = ""
+if word:  
+    words.append(word)
+
+largest_word = ""
+for word in words:
+    if len(word) > len(largest_word):
+        largest_word = word
+
+max_count = 0
+most_repeated_letter = ""
+for letter in largest_word:
+    count = 0
+    for char in largest_word:
+        if letter == char:
+            count += 1
+    if count > max_count:
+        max_count = count
+        most_repeated_letter = letter
+
+print(f"Largest word: {largest_word}")
+print(f"Most repeated letter in '{largest_word}': '{most_repeated_letter}' with {max_count} occurrences")
+
+4.
+
+differnce between list and tupe in python.atleast 5 differnces.
+
+1)List: Mutable,the contents of a list can be changed after it is created (elements can be added, removed, or altered).
+  Tuple: Immutable, once a tuple is created, its contents cannot be changed (elements cannot be added, removed, or altered).
+2)List: Defined using square brackets, e.g., my_list = [1, 2, 3].
+  Tuple: Defined using parentheses, e.g., my_tuple = (1, 2, 3).
+3)List: Consumes more memory, as it requires extra space to accommodate future changes (adding/removing elements).
+  Tuple: Consumes less memory, as it is a fixed-size, immutable structure.
+4)List: Ideal for collections of items that are likely to change, such as a list of tasks that can be updated, a list of user data that may need to be modified, etc.
+  Tuple: Best suited for collections of items that should remain constant throughout the program.
+5)List: Lists come with a variety of methods like append(), remove(), extend(), insert(), etc., which allow for extensive manipulation of the list contents.
+  Tuple: Tuples have fewer built-in methods due to their immutability. Common methods include count() and index().
+6)List: Cannot be used as keys in dictionaries because they are mutable.
+  Tuple: Can be used as keys in dictionaries because they are immutable.
+
+5.
+
+list1 = [1, 2, 3, 4, 5, 6]
+list2 = [2, 3, 4, 8, 9]
+
+set1 = set(list1)
+set2 = set(list2)
+
+common_elements = set1 & set2
+
+uncommon_elements = set1 ^ set2
+
+print("Common elements:", common_elements)
+print("Uncommon elements:", uncommon_elements)
+
+OUTPUT:
+
